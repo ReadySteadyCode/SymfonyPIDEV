@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Deal list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titredeal</th>
+                <th>Descdeal</th>
+                <th>Prixdeal</th>
+                <th>Nbrachatactuel</th>
+                <th>Nbrachatvalidation</th>
+                <th>Etatdeal</th>
+                <th>Statutdeal</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Nbraffichage</th>
+                <th>Idvendeur</th>
+                <th>Categorie</th>
+                <th>Img</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('deal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.titredeal }}</td>
+                <td>{{ entity.descdeal }}</td>
+                <td>{{ entity.prixdeal }}</td>
+                <td>{{ entity.nbrachatactuel }}</td>
+                <td>{{ entity.nbrachatvalidation }}</td>
+                <td>{{ entity.etatdeal }}</td>
+                <td>{{ entity.statutdeal }}</td>
+                <td>{% if entity.datedebut %}{{ entity.datedebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.datefin %}{{ entity.datefin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.nbraffichage }}</td>
+                <td>{{ entity.idvendeur }}</td>
+                <td>{{ entity.categorie }}</td>
+                <td>{{ entity.img }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('deal_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('deal_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('deal_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

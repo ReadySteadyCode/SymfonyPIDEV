@@ -1,0 +1,80 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Deal</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Titredeal</th>
+                <td>{{ entity.titredeal }}</td>
+            </tr>
+            <tr>
+                <th>Descdeal</th>
+                <td>{{ entity.descdeal }}</td>
+            </tr>
+            <tr>
+                <th>Prixdeal</th>
+                <td>{{ entity.prixdeal }}</td>
+            </tr>
+            <tr>
+                <th>Nbrachatactuel</th>
+                <td>{{ entity.nbrachatactuel }}</td>
+            </tr>
+            <tr>
+                <th>Nbrachatvalidation</th>
+                <td>{{ entity.nbrachatvalidation }}</td>
+            </tr>
+            <tr>
+                <th>Etatdeal</th>
+                <td>{{ entity.etatdeal }}</td>
+            </tr>
+            <tr>
+                <th>Statutdeal</th>
+                <td>{{ entity.statutdeal }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ entity.datedebut|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ entity.datefin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Nbraffichage</th>
+                <td>{{ entity.nbraffichage }}</td>
+            </tr>
+            <tr>
+                <th>Idvendeur</th>
+                <td>{{ entity.idvendeur }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ entity.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Img</th>
+                <td>{{ entity.img }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('deal') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('deal_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Vendeur list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomcommercial</th>
+                <th>Addresse</th>
+                <th>Typebien</th>
+                <th>Description</th>
+                <th>Note</th>
+                <th>Posx</th>
+                <th>Posy</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('vendeur_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nomcommercial }}</td>
+                <td>{{ entity.addresse }}</td>
+                <td>{{ entity.typebien }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.note }}</td>
+                <td>{{ entity.posx }}</td>
+                <td>{{ entity.posy }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('vendeur_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('vendeur_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('vendeur_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
